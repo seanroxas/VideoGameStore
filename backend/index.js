@@ -1,9 +1,12 @@
+import path from "path";
 import express from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import { videoGame } from "./models/videoGameModel.js";
 import gamesRoute from "./routes/gamesRoute.js";
 import cors from "cors";
+
+const __dirname = path.resolve();
 
 const app = express();
 
@@ -13,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 // app.use(
 //   cors({
-//     origin: "https://localhost:3000",
+//     origin: "*",
 //     methods: ["GET", "POST", "PUT", "DELETE"],
 //     allowedHeaders: ["Content-Type"],
 //   })
@@ -24,6 +27,10 @@ app.use(cors());
 //   return response.status(234).send("Welcome to MERN Stack Tutorial");
 // });
 
+// app.use(express.static(path.join(__dirname, "/frontend/dist")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+// });
 app.use("/videogames", gamesRoute);
 mongoose
   .connect(mongoDBURL)
