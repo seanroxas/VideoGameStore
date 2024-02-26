@@ -1,2 +1,2 @@
 # VideoGameStore
- Developed a simple CRUD application using MongoDB, Express, React, NodeJS. 
+Developed a simple CRUD application using MongoDB, Express, React, NodeJS. 
